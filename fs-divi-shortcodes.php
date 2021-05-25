@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_filter( 'manage_et_pb_layout_posts_columns', 'fs_create_shortcode_column', 5 );
 add_action( 'manage_et_pb_layout_posts_custom_column', 'fs_shortcode_content', 5, 2 );
 // register new shortcode
-add_shortcode('fs_layout_sc', 'ds_shortcode_mod');
+add_shortcode('fs_layout_sc', 'fs_shortcode_mod');
 
 // New Admin Column
 function fs_create_shortcode_column( $columns ) {
