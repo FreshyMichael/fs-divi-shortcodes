@@ -1,8 +1,8 @@
 <?php
 /**
-* Plugin Name: Add PluginName
+* Plugin Name: FS Divi Library Shortcodes
 * Plugin URI: https://github.com/FreshyMichael/Plugin-Starter
-* Description: Add a Description
+* Description: Add Divi Library Shortcode to display library items anywhere
 * Version: 1.0.0
 * Author: FreshySites
 * Author URI: https://freshysites.com/
@@ -13,8 +13,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die();
 }
 
-/* PluginName Start */
+/* FS Divi Library Shortcodes Start */
 //______________________________________________________________________________
+
+// create new column in et_pb_layout screen
+add_filter( 'manage_et_pb_layout_posts_columns', 'fs_create_shortcode_column', 5 );
+add_action( 'manage_et_pb_layout_posts_custom_column', 'fs_shortcode_content', 5, 2 );
+// register new shortcode
+add_shortcode('fs_layout_sc', 'ds_shortcode_mod');
+
+// New Admin Column
+function fs_create_shortcode_column( $columns ) {
+$columns['fs_shortcode_id'] = 'Module Shortcode';
+return $columns;
+}
+
+//Display Shortcode
+function fs_shortcode_content( $column, $id ) {
+if( 'fs_shortcode_id' == $column ) {
+?>
+<p>[fs_layout_sc id="<?php echo $id ?>"]</p>
+<?php
+}
+}
+
+// Create New Shortcode
+function fs_shortcode_mod($fs_mod_id) {
+extract(shortcode_atts(array('id' =>'*'),$fs_mod_id));
+return do_shortcode('[et_pb_section global_module="'.$id.'"][/et_pb_section]');
+}
 
 
 //______________________________________________________________________________
@@ -42,5 +69,5 @@ $myUpdateChecker->getVcsApi()->enableReleaseAssets();
 //$myUpdateChecker->setBranch('stable-branch-name');
 
 //______________________________________________________________________________
-/* PluginName End */
+/* FS Divi Library Shortcodes End */
 ?>
