@@ -51,10 +51,10 @@ return do_shortcode('[et_pb_section global_module="'.$id.'"][/et_pb_section]');
 require 'plugin-update-checker/plugin-update-checker.php';
 $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 // ***IMPORTANT*** Update this path to New Github Repository Master Branch Path
-	'https://github.com/FreshyMichael/Plugin-Starter',
+	'https://github.com/FreshyMichael/fs-divi-shortcodes',
 	__FILE__,
 // ***IMPORTANT*** Update this to New Repository Master Branch Path
-	'Plugin-Starter'
+	'fs-divi-shortcodes'
 );
 //Enable Releases
 $myUpdateChecker->getVcsApi()->enableReleaseAssets();
